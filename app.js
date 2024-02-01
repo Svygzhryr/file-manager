@@ -1,5 +1,6 @@
 import * as nav from "./scripts/nav.js";
 import * as file from "./scripts/files.js";
+import * as hash from "./scripts/hash.js";
 import * as readline from "node:readline/promises";
 import * as os from "os";
 
@@ -64,7 +65,7 @@ const beginListening = () => {
           break;
 
         case "hash":
-          console.log("going up!!!");
+          hash.calculateHash(args[0]);
           break;
 
         case "compress":
