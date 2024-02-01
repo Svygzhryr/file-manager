@@ -1,0 +1,9 @@
+{
+  "name": "file-manager",
+  "version": "0.0.1",
+  "author": "Pavel Mihailov",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
+  }
+}
