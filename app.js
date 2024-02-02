@@ -8,10 +8,6 @@ import { getOsInfo } from "./scripts/osinfo.js";
 import { compressFile } from "./scripts/compress.js";
 import { decompressFile } from "./scripts/decompress.js";
 
-const closeApp = () => {
-  process.exit();
-};
-
 const beginListening = () => {
   const rl = readline.createInterface({
     input: process.stdin,
@@ -81,7 +77,7 @@ const beginListening = () => {
           break;
       }
     } catch (err) {
-      console.log(err);
+      console.error("Operation failed");
     }
   });
 };
