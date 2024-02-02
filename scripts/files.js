@@ -5,6 +5,10 @@ export const readFile = (path) => {
   rs.on("data", (data) => {
     console.log(data.toString());
   });
+  rs.on("error", () => {
+    console.error("Operation failed");
+    return;
+  });
 };
 
 export const createFile = (name) => {
@@ -16,7 +20,7 @@ export const createFile = (name) => {
 
 export const renameFile = (oldName, newName) => {
   fs.rename(oldName, newName, (err) => {
-    if (err) throw err;
+    if (err) return;
     console.log(`File ${oldName} renamed to ${newName}`);
   });
 };
@@ -26,6 +30,9 @@ export const copyFile = (path, dest) => {
     .pipe(fs.createWriteStream(dest))
     .on("finish", () => {
       console.log(`File ${path} copied!`);
+    })
+    .on("error", () => {
+      return;
     });
 };
 
@@ -42,7 +49,10 @@ export const moveFile = (path, dest) => {
 
 export const deleteFile = (path) => {
   fs.unlink(path, (err) => {
-    if (err) throw err;
+    if (err) {
+      console.error("Operation failed");
+      return;
+    }
     console.log(`File ${path} deleted!`);
   });
 };

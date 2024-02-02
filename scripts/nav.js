@@ -17,7 +17,7 @@ export const goUp = () => {
 export const showFileList = async () => {
   let tableData = [];
   fs.readdir(process.cwd(), { withFileTypes: true }, async (err, files) => {
-    files.forEach((file, index) => {
+    files.forEach((file) => {
       const promise = new Promise((resolve, reject) => {
         resolve({
           name: file.name,
