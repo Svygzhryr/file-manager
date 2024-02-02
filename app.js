@@ -1,8 +1,12 @@
+import * as os from "os";
+import * as readline from "node:readline/promises";
+
 import * as nav from "./scripts/nav.js";
 import * as file from "./scripts/files.js";
 import * as hash from "./scripts/hash.js";
-import * as readline from "node:readline/promises";
-import * as os from "os";
+import { getOsInfo } from "./scripts/osinfo.js";
+import { compressFile } from "./scripts/compress.js";
+import { decompressFile } from "./scripts/decompress.js";
 
 const closeApp = () => {
   process.exit();
@@ -61,7 +65,7 @@ const beginListening = () => {
           break;
 
         case "os":
-          console.log("going up!!!");
+          getOsInfo(args[0]);
           break;
 
         case "hash":
@@ -69,11 +73,11 @@ const beginListening = () => {
           break;
 
         case "compress":
-          console.log("going up!!!");
+          compressFile(args[0], args[1]);
           break;
 
         case "decompress":
-          console.log("going up!!!");
+          decompressFile(args[0], args[1]);
           break;
       }
     } catch (err) {
